@@ -14,6 +14,7 @@ print(vehicle)
 # 4.wait arming
 # 5.take Off
 # 6.check alt
+#****************************************************************************#
 
 # while not vehicle.is_armable:
 #     print('Waiting for vehicle to initialize...')
