@@ -2,7 +2,7 @@ from dronekit import connect, VehicleMode
 import time
 
 #UDP connect
-vehicle = connect('127.0.0.1:14550', wait_ready=True)
+vehicle = connect('127.0.0.1:14551', wait_ready=True)
 
 print("connected")
 print(vehicle)
@@ -16,58 +16,60 @@ print(vehicle)
 # 6.check alt
 #****************************************************************************#
 
-# while not vehicle.is_armable:
-#     print('Waiting for vehicle to initialize...')
-#     time.sleep(1)
-# print('Arming motors')
-# vehicle.mode = VehicleMode('GUIDED')
-# vehicle.armed = True
+while not vehicle.is_armable:
+    print('Waiting for vehicle to initialize...')
+    time.sleep(1)
+print('Arming motors')
+vehicle.mode = VehicleMode('GUIDED')
+vehicle.armed = True
 
-# while not vehicle.armed:
-#     print('Waiting for arming...')
-#     time.sleep(1)
+while not vehicle.armed:
+    print('Waiting for arming...')
+    time.sleep(1)
 
-# targetAltitude = 20
-# vehicle.simple_takeoff(targetAltitude)
-# print('Take off')
+targetAltitude = 20
+vehicle.simple_takeoff(targetAltitude)
+print('Take off')
 
-# while True:
-#     print('Altitude',vehicle.location.global_frame.alt)
-#     if vehicle.location.global_relative_frame.alt >= targetAltitude * 0.95:
-#         print('Reach TargetAltitude')
-#         break
-#     time.sleep(1)
+while True:
+    print('Altitude',vehicle.location.global_frame.alt)
+    if vehicle.location.global_relative_frame.alt >= targetAltitude * 0.95:
+        print('Reach TargetAltitude')
+        break
+    time.sleep(1)
+vehicle.close
+
 #****************************************************************************#
 # # another function
 # wait_for_armable, wait_for_mode, wait_foralt, wait_for_takeoff, arm, disarm
 #another format
 
-target_alt = 10
+# target_alt = 10
 
-guided = VehicleMode('GUIDED')
-print('Vehicle mode is {}'.format(guided))
+# guided = VehicleMode('GUIDED')
+# print('Vehicle mode is {}'.format(guided))
 
-vehicle.wait_for_armable(30)
-print('Vehicle is armable')
+# vehicle.wait_for_armable(30)
+# print('Vehicle is armable')
 
-vihicle_mode = vehicle.wait_for_mode(guided, timeout=5)
-print('Vehicle mode is {}'.format(vihicle_mode))
+# vihicle_mode = vehicle.wait_for_mode(guided, timeout=5)
+# print('Vehicle mode is {}'.format(vihicle_mode))
 
-vehicle.arm(wait=True, timeout=5)
-print('Armed state {}'.format(vehicle.armed))
+# vehicle.arm(wait=True, timeout=5)
+# print('Armed state {}'.format(vehicle.armed))
 
-vehicle.wait_simple_takeoff(10)
-print('takeoff!')
+# vehicle.wait_simple_takeoff(10)
+# print('takeoff!')
 
-while True:
-    print('Altitude',vehicle.location.global_frame.alt)
-    if vehicle.location.global_relative_frame.alt >= target_alt * 0.95:
-        print('Reach TargetAltitude')
-        break
-    time.sleep(1)
+# while True:
+#     print('Altitude',vehicle.location.global_frame.alt)
+#     if vehicle.location.global_relative_frame.alt >= target_alt * 0.95:
+#         print('Reach TargetAltitude')
+#         break
+#     time.sleep(1)
 
-vehicle.wait_for_mode(VehicleMode('LOITER'))
-vehicle.close
+# vehicle.wait_for_mode(VehicleMode('LOITER'))
+# vehicle.close
 
 #****************************************************************************#
 # # homelocation
