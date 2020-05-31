@@ -1,1 +1,1 @@
-# my_dronekit_source
+# 2回目（5月30日）講義コード
