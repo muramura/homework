@@ -69,11 +69,7 @@ while True:
 vehicle.wait_for_mode(VehicleMode('LOITER'))
 vehicle.close
 
-
-
 #****************************************************************************#
-
-
 # # homelocation
 # while not vehicle.home_location:
 #     cmds = vehicle.commands
@@ -81,10 +77,9 @@ vehicle.close
 #     cmds.wait_ready()
 #     if not vehicle.home_location:
 #         print("Waiting home location...")
-    
 # print('\n HomeLocation : %s'%vehicle.home_location)
-#****************************************************************************#
 
+#****************************************************************************#
 # #get param
 # print('RTL_ALT_is {}' .format(vehicle.parameters['RTL_ALT']))
 # vehicle.parameters['RTL_ALT'] =2000
@@ -93,8 +88,8 @@ vehicle.close
 # #param list
 # for key, value in vehicle.parameters.iteritems():
 #     print("key:%s Value:%s" %(key, value))
-#****************************************************************************#
 
+#****************************************************************************#
 # #Listener
 # def location_callback(self, attr, val):
 #     print(attr)
